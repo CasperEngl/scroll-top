@@ -1,7 +1,7 @@
 {
   "name": "@casperengl/scroll-top",
   "version": "1.0.0",
-  "main": "./lib/index.js",
+  "browser": "./lib/index.js",
   "license": "MIT",
   "scripts": {
     "build": "rollup -c rollup.config.js"
