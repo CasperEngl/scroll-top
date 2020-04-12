@@ -8,4 +8,9 @@ export function scrollTop() {
   return (document.documentElement || document.body.parentNode || document.body).scrollTop
 }
 
+if (typeof window !== 'undefined') {
+  // @ts-ignore
+  window.scrollTop = scrollTop
+}
+
 export default scrollTop

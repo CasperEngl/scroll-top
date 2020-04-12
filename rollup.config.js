@@ -1,17 +1,38 @@
-import typescript from '@rollup/plugin-typescript'
+import typescript from 'rollup-plugin-typescript'
 import { terser } from 'rollup-plugin-terser'
 
-export default {
-  input: './src/index.ts',
-  output: {
-    exports: 'named',
-    name: 'scrollTop',
-    dir: './lib',
-    format: 'umd',
-    sourcemap: true,
+import pkg from './package.json'
+
+export default [
+  {
+    input: './src/scroll-top.ts',
+    output: {
+      name: 'scrollTop',
+      dir: './lib',
+      format: 'umd',
+      globals: {
+        tslib: 'tslib',
+      },
+    },
+    plugins: [
+      typescript(),
+      terser(),
+    ],
+    external: ['tslib'],
   },
-  plugins: [
-    typescript(),
-    terser(),
-  ],
-}
+  {
+    input: './src/scroll-top.ts',
+    output: [
+      {
+        file: pkg.module,
+        format: 'es',
+      },
+      {
+        name: 'scrollTop',
+        exports: 'named',
+        file: pkg.browser,
+        format: 'umd',
+      },
+    ],
+  },
+]
