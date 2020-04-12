@@ -1,6 +1,6 @@
 {
   "name": "@casperengl/scroll-top",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "browser": "./lib/index.js",
   "license": "MIT",
   "scripts": {
